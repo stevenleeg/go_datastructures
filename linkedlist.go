@@ -28,6 +28,24 @@ func (list *LinkedList) Insert(data interface{}) {
     current.Next = node
 }
 
+func (list *LinkedList) Remove(data interface{}) interface{} {
+    current := list.Root
+    if current == nil {
+        return nil
+    }
+
+    for current.Next != nil {
+        if(current.Next.Data == data) {
+            current.Next = current.Next.Next
+            return data
+        }
+
+        current = current.Next
+    }
+
+    return nil
+}
+
 func (list *LinkedList) Contains(data interface{}) bool {
     current := list.Root
     for current != nil {
@@ -67,4 +85,8 @@ func main() {
     } else {
         fmt.Println("No.")
     }
+
+    fmt.Println("Removing 2 from list")
+    list.Remove(2)
+    list.Print()
 }
