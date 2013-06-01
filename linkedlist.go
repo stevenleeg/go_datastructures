@@ -58,6 +58,10 @@ func (list *LinkedList) Contains(data interface{}) bool {
     return false
 }
 
+func (list *LinkedList) IsEmpty() bool {
+    return (list.Root == nil)
+}
+
 func (list *LinkedList) Print() {
     current := list.Root
     for current != nil {
@@ -68,10 +72,15 @@ func (list *LinkedList) Print() {
 
 func main() {
     list := new(LinkedList)
+
+    fmt.Printf("List is empty? %t\n", list.IsEmpty());
+
     list.Insert(1)
     list.Insert(2)
     list.Insert(3)
     list.Print()
+
+    fmt.Printf("List is empty? %t\n", list.IsEmpty());
 
     fmt.Println("Does 2 exist in the list?")
     if list.Contains(2) {
